@@ -1,28 +1,32 @@
-def encrypt(s: str, shift: int = 3) -> str:
-    result = ""
-    for c in s:
-        if c.isalpha():
-            base = ord("A") if c.isupper() else ord("a")
-            offset = (ord(c) - base + shift) % 26
-            result += chr(base + offset)
-        else:
-            result += c
+class CaesarCipher:
+    def __init__(self, shift: int = 3):
+        self.shift = shift
 
-    return result
+    def encrypt(self, s: str) -> str:
+        result = ""
+        for c in s:
+            if c.isalpha():
+                base = ord("A") if c.isupper() else ord("a")
+                offset = (ord(c) - base + self.shift) % 26
+                result += chr(base + offset)
+            else:
+                result += c
+
+        return result
+
+    def decrypt(self, s: str) -> str:
+        result = ""
+        for c in s:
+            if c.isalpha():
+                base = ord("A") if c.isupper() else ord("a")
+                offset = (ord(c) - base - self.shift) % 26
+                result += chr(base + offset)
+            else:
+                result += c
+
+        return result
 
 
-def decrypt(s: str, shift: int = 3) -> str:
-    result = ""
-    for c in s:
-        if c.isalpha():
-            base = ord("A") if c.isupper() else ord("a")
-            offset = (ord(c) - base - shift) % 26
-            result += chr(base + offset)
-        else:
-            result += c
-
-    return result
-
-
-print(encrypt("I'm a robot!"))
-print(decrypt("L'p d urerw!"))
+caesar = CaesarCipher(5)
+encrypt = caesar.encrypt("I'm a robot!")
+decrypt = caesar.decrypt("L'p d urerw!")
