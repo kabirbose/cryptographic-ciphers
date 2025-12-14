@@ -27,6 +27,7 @@ class CaesarCipher:
         return result
 
 
-caesar = CaesarCipher(5)
-encrypt = caesar.encrypt("I'm a robot!")
-decrypt = caesar.decrypt("L'p d urerw!")
+encrypt = CaesarCipher(4).encrypt("I'm a robot!")
+decrypt = CaesarCipher(4).decrypt("M'q e vsfsx!")
+
+print(f"Encrypted: {encrypt}, Decrypted: {decrypt}")
